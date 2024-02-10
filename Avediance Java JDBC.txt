@@ -1,0 +1,99 @@
+
+--------------------------------DATA INSART------------------------------------------
+ try{
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/infoemployee", "root", "nclc123456");
+        PreparedStatement ps=con.prepareStatement("insert into employee(id,name,email,round)values(?,?,?,?)");
+        
+        ps.executeUpdate();
+            System.out.println("Insert Done");
+        }catch(Exception e){
+            System.out.println(e);
+        }
+
+	----------------------------------DARA UPDATE-------------------------------------
+
+
+		 try{
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/infoemployee", "root", "nclc123456");
+        PreparedStatement ps=con.prepareStatement("update employee set email='abcd@hmail.com' where id=45");
+         ps.executeUpdate();
+            System.out.println("insert update");
+        }catch(Exception e){
+            System.out.println(e);
+        }
+
+
+-------------------------------------------DATA DELETE--------------------------------------------------
+
+	try {
+             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/infoemployee", "root", "nclc123456");
+        PreparedStatement ps=con.prepareStatement("delete from employee where id=105");
+         ps.executeUpdate();
+            System.out.println("delete done");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+-------------------------------------------DATA SELECT---------------------------------------------------
+
+		 try {
+             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/infoemployee", "root", "nclc123456");
+        PreparedStatement ps=con.prepareStatement("select * from employee");
+       ResultSet x= ps.executeQuery();
+        while(x.next()){
+        
+        int x1=x.getInt(1);
+        String x2=x.getString(2);
+        String x3=x.getString(3);
+         int x4=x.getInt(4);
+            System.out.println(x1+"  "+x2+"  "+x3+"  "+x4);
+        }
+            System.out.println("show done");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+--------------------------------------aksathe------------------------------------------------
+
+
+package infojdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+
+public class jDBC1 {
+    public static void main(String[] args) {
+         try{
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/stdb", "root", "nclc123456");
+        PreparedStatement ps=con.prepareStatement("insert into employees(id,name,email,round)values(58,'Topu','abc@gmail.com',57)");
+        
+        ps.executeUpdate();
+            System.out.println("Insert Done");
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+         
+         try{
+             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/stdb", "root", "nclc123456");
+        PreparedStatement ps=con.prepareStatement ("update employees set name='Saju' where id=58");
+             
+        
+         ps.executeUpdate();
+            System.out.println("insert update");
+        }catch(Exception e){
+            System.out.println(e);
+        }
+         
+         try {
+             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/stdb", "root", "nclc123456");
+        PreparedStatement ps=con.prepareStatement("delete from employees where id=1280199");
+         ps.executeUpdate();
+            System.out.println("delete done");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
