@@ -1,0 +1,121 @@
+
+
+-----------------------------------------hospital,swing(databach add)--------------------------------------------
+
+ ArrayList<String> s = new ArrayList<>();
+try {
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/stdb", "root", "nclc123456");
+
+            PreparedStatement ps = con.prepareStatement("insert into hospital(Name_of_the_patient, Name_of_the_Nurse,Name_of_the_physician,Room_No,Start_Date,Time)values(?,?,?,?,?,?)");
+            ps.setString(1, t1.getText());
+            ps.setString(2, t2.getText());
+            ps.setString(3, t3.getText());
+            ps.setString(4, t4.getText());
+            ps.setString(5, t5.getText());
+            ps.setString(6, t6.getText());
+
+            //a.setText("Insert data done");
+            s.add(t1.getText());
+            t1.setText(null);
+            s.add(t2.getText());
+            t2.setText(null);
+            s.add(t3.getText());
+            t3.setText(null);
+            s.add(t4.getText());
+            t4.setText(null);
+            s.add(t5.getText());
+            t5.setText(null);
+            s.add(t6.getText());
+            t6.setText(null);
+            String z = String.valueOf(s.size() + " Item add");
+            a.setText(z);
+
+            t1.setText("");
+            t2.setText("");
+            t3.setText("");
+            t4.setText("");
+            t5.setText("");
+            t6.setText("");
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+
+    }                                        
+------------------------------ defrent mathod-----------------------------------
+  
+        try {
+
+            String x1 = "";
+            for (String x : s) {
+
+                x1 = x1 + "\n" + x;
+
+            }
+
+            a2.setText(x1);
+        } catch (Exception e) {
+        }
+--------------------------------------------------hospital end---------------------------------------------------
+
+
+
+
+
+
+
+
+---------------------------------swing consol see-------------------------------------
+
+ArrayList<String> s = new ArrayList<>();
+
+
+
+
+try {
+
+            s.add(t1.getText());
+            t1.setText(null);
+            s.add(t2.getText());
+            t2.setText(null);
+            s.add(t3.getText());
+            t3.setText(null);
+            s.add(t4.getText());
+            t4.setText(null);
+            s.add(t5.getText());
+            t5.setText(null);
+
+            String z = String.valueOf(s.size() + " Item add");
+            a.setText(z);
+
+            System.out.println("before");
+
+            t1.setText("");
+            t2.setText("");
+            t3.setText("");
+            t4.setText("");
+            t5.setText("");
+
+            System.out.println("after");
+
+//            f.setText(ex + " are inserted");
+        } catch (Exception e) {
+        }
+
+---------defrebt  mathod----------------------
+
+try {
+
+            String x1 = "";
+            for (String x : s) {
+
+                x1 = x1 + "\n" + x;
+
+            }
+
+            a.setText(x1);
+        } catch (Exception e) {
+        }
