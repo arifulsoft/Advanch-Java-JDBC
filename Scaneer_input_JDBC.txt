@@ -1,0 +1,83 @@
+-------------------------------------Scanner input JDBC------------------------------------------
+
+package ttttttttt;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
+
+public class jdbc {
+
+    public jdbc() {
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/stdb", "root", "nclc123456");
+            PreparedStatement ps = con.prepareStatement("insert into college(id,name,email,round) values(?,?,?,?)");
+
+            System.out.println("Enter your name");
+            String name = sc.nextLine();
+
+            System.out.println("Enter your email");
+            String email = sc.nextLine();
+
+            System.out.println("Enter your id");
+            int id = sc.nextInt();
+
+            sc.nextLine();
+
+            System.out.println("Enter your round");
+            int round = sc.nextInt();
+         
+            ps.setInt(1, id);
+            ps.setString(2, name);
+            ps.setString(3, email);
+            ps.setInt(4, round);
+
+            ps.executeUpdate();
+
+            System.out.println("insert successfully");
+
+        } catch (Exception e) {
+        }
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/stdb", "root", "nclc123456");
+            PreparedStatement ps = con.prepareStatement("update college set name='Rihat' where id=102");
+            ps.executeUpdate();
+            System.out.println("update done");
+        } catch (Exception e) {
+        }
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/stdb", "root", "nclc123456");
+            PreparedStatement ps = con.prepareStatement("delete from college where id=103");
+            ps.executeUpdate();
+            System.out.println("delete done");
+        } catch (Exception e) {
+        }
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/stdb", "root", "nclc123456");
+            PreparedStatement ps = con.prepareStatement("select* from college");
+            ResultSet x = ps.executeQuery();
+            while (x.next()) {
+                int x1 = x.getInt(1);
+                String x2 = x.getString(2);
+                String x3 = x.getString(3);
+                int x4 = x.getInt(4);
+                System.out.println("id: " + x1 + "  " + "Name: " + x2 + "  " + "Email: " + x3 + "  " + "Round: " + x4);
+
+            }
+            System.out.println("Show done");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+}
